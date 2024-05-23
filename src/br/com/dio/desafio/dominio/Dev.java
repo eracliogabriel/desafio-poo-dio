@@ -17,6 +17,7 @@ public class Dev {
         if(conteudo.isPresent()) {
             this.conteudosConcluidos.add(conteudo.get());
             this.conteudosInscritos.remove(conteudo.get());
+            System.out.println("Parabéns! Novo progresso registrado.");
         } else {
             System.err.println("Você não está matriculado em nenhum conteúdo!");
         }
@@ -31,10 +32,6 @@ public class Dev {
         }
         return soma;
 
-        /*return this.conteudosConcluidos
-                .stream()
-                .mapToDouble(Conteudo::calcularXp)
-                .sum();*/
     }
 
 
@@ -54,8 +51,20 @@ public class Dev {
         this.conteudosInscritos = conteudosInscritos;
     }
 
-    public Set<Conteudo> getConteudosConcluidos() {
-        return conteudosConcluidos;
+    public Object getConteudosConcluidos() {
+    	if (conteudosConcluidos.isEmpty())
+    	{
+    		return "Nenhum conteúdo concluído encontrado.";
+    	} 
+    	else if (conteudosConcluidos.size() == 1)
+    	{
+    		return "Conteúdo concluido: " +conteudosConcluidos;
+    	}
+    	else
+    	{
+    		return "Conteúdos concluídos: " +conteudosConcluidos;
+    	}
+    	
     }
 
     public void setConteudosConcluidos(Set<Conteudo> conteudosConcluidos) {
